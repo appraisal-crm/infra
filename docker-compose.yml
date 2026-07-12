@@ -32,6 +32,8 @@ services:
       KC_DB_USERNAME: ${KEYCLOAK_DB_USER:-keycloak}
       KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-keycloak}
       KC_HEALTH_ENABLED: "true"
+    volumes:
+      - ./keycloak/themes/avangard:/opt/keycloak/themes/avangard:ro
     ports:
       - "8180:8080"
     depends_on:
