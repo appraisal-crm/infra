@@ -90,6 +90,18 @@ services:
       kafka:
         condition: service_healthy
 
+  mailpit:
+    image: axllent/mailpit:v1.22
+    container_name: appraisal-mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025" # SMTP
+      - "8025:8025" # Web UI
+    environment:
+      MP_MAX_MESSAGES: 500
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
 volumes:
   keycloak_postgres_data:
   kafka_data:
